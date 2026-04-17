@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<title>For Raqia</title>
+<style>
+body {
+  margin: 0;
+  font-family: "Comic Sans MS", cursive, sans-serif;
+  background: linear-gradient(135deg, #ffd6e8, #ffeef5);
+  text-align: center;
+  overflow: hidden;
+}
+
+.container {
+  background: white;
+  margin: 100px auto;
+  padding: 35px;
+  border-radius: 30px;
+  width: 90%;
+  max-width: 420px;
+  box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+  position: relative;
+  z-index: 2;
+}
+
+h2, h3 {
+  color: #ff4d94;
+}
+
+button {
+  background: #ff66a3;
+  border: none;
+  padding: 10px 22px;
+  margin: 10px;
+  border-radius: 25px;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  background: #ff3385;
+  transform: scale(1.05);
+}
+
+/* قلوب متحركة */
+.heart {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: #ff4d94;
+  transform: rotate(45deg);
+  animation: float 6s linear infinite;
+}
+
+.heart::before,
+.heart::after {
+  content: "";
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: #ff4d94;
+  border-radius: 50%;
+}
+
+.heart::before {
+  top: -10px;
+  left: 0;
+}
+
+.heart::after {
+  left: -10px;
+  top: 0;
+}
+
+@keyframes float {
+  0% { transform: translateY(100vh) rotate(45deg); opacity: 1; }
+  100% { transform: translateY(-10vh) rotate(45deg); opacity: 0; }
+}
+</style>
+</head>
+<body>
+
+<div class="container" id="content">
+  <h2>هاعع رقيه شلونج؟ زينه؟</h2>
+  <button onclick="step2()">اي زينه</button>
+</div>
+
+<script>
+function step2(){
+  document.getElementById("content").innerHTML = `
+    <h3>عندي سؤال جاوبي عليه تمام؟</h3>
+    <button onclick="step3()">تمام</button>
+  `;
+}
+
+function step3(){
+  document.getElementById("content").innerHTML = `
+    <h3>تحبيني؟</h3>
+    <button onclick="yesLove()">اي</button>
+    <button onclick="noLove()">لا</button>
+  `;
+}
+
+function noLove(){
+  document.getElementById("content").innerHTML = `
+    <h3>انجبي واختاري اي</h3>
+    <button onclick="step3()">رجوع</button>
+  `;
+}
+
+function yesLove(){
+  document.getElementById("content").innerHTML = `
+    <h2>ها رقيه واخيرا وصلتي لهنا</h2>
+    <p>
+    المهم احبج واموت عليج <br><br>
+    تدرين من كلتيلي اني احبك شكد فرحت؟ <br>
+    يمعوده كمت اگمز من الفرحه <br><br>
+
+    لا تحاولين تبلكيني <br>
+    تدرين ليش؟ <br>
+    لان حرجع حسابج مهما يصير ههه <br><br>
+
+   😹 المهم اني ماحبج وبس اضحك عليج
+    </p>
+  `;
+}
+
+/* توليد قلوب */
+setInterval(() => {
+  const heart = document.createElement("div");
+  heart.classList.add("heart");
+  heart.style.left = Math.random() * 100 + "vw";
+  document.body.appendChild(heart);
+
+  setTimeout(() => {
+    heart.remove();
+  }, 6000);
+}, 600);
+</script>
+
+</body>
+</html>
